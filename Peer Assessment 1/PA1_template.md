@@ -36,7 +36,7 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 ```r
 setwd("/Users/Kheng/Documents/Data Sceince/Reproducible Research/Peer Assessment 1")
 data <- read.csv("activity.csv", header = TRUE)
-data.clean <- na.omit(data)
+data.process <- na.omit(data)
 ```
 
 ### What is the mean total number of steps taken per day?
@@ -44,7 +44,7 @@ data.clean <- na.omit(data)
 **1. Histogram**
 
 ```r
-agr <- aggregate(steps~ date, data = data.clean,sum)
+agr <- aggregate(steps~ date, data = data.process,sum)
 #pdf("histogram_of_steps_per_day.pdf")
 hist(agr$steps, xlab = "steps per day", main = "histogram of total number of steps taken per day")
 ```
@@ -85,7 +85,7 @@ steps.median
 
 
 ```r
-steps.int <- aggregate(steps~interval, data = data.clean, mean)
+steps.int <- aggregate(steps~interval, data = data.process, mean)
 plot(steps.int, type = "l")
 ```
 
@@ -127,7 +127,7 @@ for(i in 1:dim(data.c)[1]){
 
 ```r
 agr.imp <- aggregate(steps~ date, data = data.c,sum)
-hist(agr.imp$steps, xlab = "steps per day", main = " total number of steps taken each day (imputed data)")
+hist(agr.imp$steps, xlab = "steps per day", main = " total number of steps taken each day (imputed dataset)")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-9-1.png) 
